@@ -1,4 +1,4 @@
-## Flowseal/zapret-discord-youtube
+# Flowseal/zapret-discord-youtube
 
 Альтернатива: [https://github.com/bol-van/zapret-win-bundle](https://github.com/bol-van/zapret-win-bundle)
 
