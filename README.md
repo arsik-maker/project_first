@@ -1,8 +1,10 @@
-| **Flowseal/zapret-discord-youtube** 
-|---|---
-|  | Альтернатива: [https://github.com/bol-van/zapret-win-bundle](https://github.com/bol-van/zapret-win-bundle)
-|  | Также вы можете материально поддержать оригинального разработчика zapret [тут](ссылка на поддержку, если есть).
-|  | **⚠️ Caution**
-|  | **ФЕЙКИ**
-|  | Я не веду никакие другие страницы/группы в Telegram/YouTube каналы.
-|  | Если вы наткнулись на что-то вне этой страницы гитхаба, что распространяется от моего лица – **ФЕЙК**.
+This website was created on January 29, 2026.
+
+It was created to view statistics in the game Fortnite.
+
+I hope it helps you and that you'll use it in the future. This website will be constantly updated and improved.
+
+Link to the repository
+https://github.com/arsik-maker/project_first.
+
+This is the main page of the website; everything else is fake.
