@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnite Stats Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <script src="script.js"></script>
+    <header class="header">
+        <div class="header-top">
+            <button class="header-btn" onclick="openSettings()">
+                <i class="fas fa-cog"></i>
+                Settings
+            </button>
+            <button class="header-btn" onclick="openProfile()">
+                <i class="fas fa-user"></i>
+                Profile
+            </button>
+        </div>
+        <div class="header-center">
+            <div class="mode-switcher">
+                <button class="mode-btn active" onclick="switchMode('all')">All Modes</button>
+                <button class="mode-btn" onclick="switchMode('solo')">Solo</button>
+                <button class="mode-btn" onclick="switchMode('duos')">Duos</button>
+                <button class="mode-btn" onclick="switchMode('squads')">Squads</button>
+                <button class="mode-btn" onclick="switchMode('arena')">Arena</button>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="fortnite-branding">
+                <i class="fas fa-gamepad"></i>
+                <span>FORTNITE</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <span class="stat-card-title">Total Wins</span>
+                    <i class="fas fa-trophy stat-card-icon"></i>
+                </div>
+                <div class="stat-card-value" id="total-wins">342</div>
+                <div class="stat-card-subtitle">Across all modes</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <span class="stat-card-title">Total Kills</span>
+                    <i class="fas fa-crosshairs stat-card-icon"></i>
+                </div>
+                <div class="stat-card-value" id="total-kills">8,547</div>
+                <div class="stat-card-subtitle">All-time eliminations</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <span class="stat-card-title">K/D Ratio</span>
+                    <i class="fas fa-chart-line stat-card-icon"></i>
+                </div>
+                <div class="stat-card-value" id="kd-ratio">3.24</div>
+                <div class="stat-card-subtitle">Kill/Death ratio</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <span class="stat-card-title">Win Rate</span>
+                    <i class="fas fa-percent stat-card-icon"></i>
+                </div>
+                <div class="stat-card-value" id="win-rate">18.5%</div>
+                <div class="stat-card-subtitle">Victory percentage</div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-section">
+            <div class="chart-card">
+                <h3 class="chart-card-title">Performance Trend</h3>
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h3 class="chart-card-title">Wins by Mode</h3>
+                <div class="chart-container">
+                    <canvas id="winsByModeChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Matches -->
+        <div class="recent-matches">
+            <h3 class="recent-matches-title">Recent Matches</h3>
+            <div id="matches-container">
+                <!-- Matches will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Settings</h2>
+                <button class="modal-close" onclick="closeSettings()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <span class="setting-label">Dark Mode</span>
+                    <div class="toggle-switch active" onclick="toggleSetting(this)">
+                        <div class="toggle-slider"></div>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">Notifications</span>
+                    <div class="toggle-switch active" onclick="toggleSetting(this)">
+                        <div class="toggle-slider"></div>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">Auto-Refresh Stats</span>
+                    <div class="toggle-switch" onclick="toggleSetting(this)">
+                        <div class="toggle-slider"></div>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">Show Advanced Stats</span>
+                    <div class="toggle-switch active" onclick="toggleSetting(this)">
+                        <div class="toggle-slider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Player Profile</h2>
+                <button class="modal-close" onclick="closeProfile()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="profile-info">
+                    <div class="profile-item">
+                        <span class="profile-label">Username</span>
+                        <span class="profile-value">ProPlayer2024</span>
+                    </div>
+                    <div class="profile-item">
+                        <span class="profile-label">Level</span>
+                        <span class="profile-value">247</span>
+                    </div>
+                    <div class="profile-item">
+                        <span class="profile-label">Season Rank</span>
+                        <span class="profile-value">Champion Division</span>
+                    </div>
+                    <div class="profile-item">
+                        <span class="profile-label">Account Created</span>
+                        <span class="profile-value">March 2019</span>
+                    </div>
+                    <div class="profile-item">
+                        <span class="profile-label">Total Matches</span>
+                        <span class="profile-value">1,847</span>
+                    </div>
+                    <div class="profile-item">
+                        <span class="profile-label">Hours Played</span>
+                        <span class="profile-value">456h</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
